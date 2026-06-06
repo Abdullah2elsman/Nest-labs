@@ -1,0 +1,13 @@
+export class User {
+  id: number;
+  firstName: string;
+  lastName: string;
+  age: number;
+  password: string;
+  email: string;       // must be unique
+  courses: number[];   // array of course IDs
+
+  constructor(partial: Partial<User>) {
+    Object.assign(this, partial);
+  }
+}
