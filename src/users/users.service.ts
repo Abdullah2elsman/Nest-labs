@@ -113,4 +113,18 @@ export class UsersService {
     this.logger.log(`User #${userId} left course #${courseId}`);
     return user;
   }
+
+  /** Save the uploaded avatar path on the user record */
+  uploadAvatar(userId: number, filePath: string): User {
+    const user = this.findOne(userId);
+    user.avatarPath = filePath;
+    this.store.set(userId, user);
+    this.logger.log(`Avatar uploaded for user #${userId} → ${filePath}`);
+    return user;
+  }
+
+  /** Return the stored avatar path for a user */
+  getAvatarPath(userId: number): string | undefined {
+    return this.findOne(userId).avatarPath;
+  }
 }
